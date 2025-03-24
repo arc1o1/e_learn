@@ -8,9 +8,16 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Profile Screen",
+          "My Profile",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(15),
+        shrinkWrap: true,
+        children: [
+          // profile image
+        ],
       ),
     );
   }
