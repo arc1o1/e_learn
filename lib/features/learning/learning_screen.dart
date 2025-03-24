@@ -1,5 +1,7 @@
-import 'package:e_learn/features/learning/widgets/learning_tab_views.dart';
-import 'package:e_learn/features/learning/widgets/tab_bar_items.dart';
+import 'package:e_learn/features/learning/tabs/exams_learning_tab.dart';
+import 'package:e_learn/features/learning/tabs/notes_learning_tab.dart';
+import 'package:e_learn/features/learning/tabs/weekly_test_learning_tab.dart';
+import 'package:e_learn/features/learning/tabs/tab_bar_items.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:flutter/material.dart';
 
@@ -63,7 +65,7 @@ class LearningScreen extends StatelessWidget {
                     NotesLearningTab(subjects: subjects),
 
                     // Weekkly Tests
-                    WeeklTestLearningTab(subjects: subjects),
+                    WeeklyTestLearningTab(subjects: subjects),
 
                     // Exams
                     ExamsLearningTab(subjects: subjects),
