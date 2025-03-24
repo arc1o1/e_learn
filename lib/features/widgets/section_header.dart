@@ -26,21 +26,22 @@ class SectionHeader extends StatelessWidget {
         ),
 
         // show all button
-        InkWell(
-          borderRadius: BorderRadius.circular(100),
-          hoverColor: ColorStrings.primary,
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-            child: Text(
-              actionButtonTitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .copyWith(fontSize: 13, color: ColorStrings.primary),
+        if (showActionButton)
+          InkWell(
+            borderRadius: BorderRadius.circular(100),
+            hoverColor: ColorStrings.primary,
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              child: Text(
+                actionButtonTitle,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .copyWith(fontSize: 13, color: ColorStrings.primary),
+              ),
             ),
           ),
-        ),
       ],
     );
   }
