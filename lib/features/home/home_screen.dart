@@ -1,6 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_learn/features/home/widgets/home_lesson_section.dart';
 import 'package:e_learn/features/widgets/advert_banner.dart';
+import 'package:e_learn/features/widgets/notifications_icon_button.dart';
+import 'package:e_learn/features/widgets/profile_image_circular_container.dart';
 import 'package:e_learn/features/widgets/section_header.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:flutter/material.dart';
@@ -47,19 +48,7 @@ class HomeScreen extends StatelessWidget {
                       Row(
                         children: [
                           // profile_image
-                          Container(
-                            padding: EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: ColorStrings.primary,
-                            ),
-                            child: CircleAvatar(
-                              radius: 22,
-                              backgroundImage: CachedNetworkImageProvider(
-                                "https://images.unsplash.com/photo-1660798027105-5da8ad164e27?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                              ),
-                            ),
-                          ),
+                          ProfileImageCircularContainer(),
 
                           const SizedBox(width: 10),
 
@@ -94,39 +83,7 @@ class HomeScreen extends StatelessWidget {
                       ),
 
                       // notification
-                      InkWell(
-                        onTap: () {},
-                        hoverColor: ColorStrings.secondary,
-                        borderRadius: BorderRadius.circular(100),
-                        child: Container(
-                          padding: EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                color: ColorStrings.secondary, width: 2),
-                          ),
-                          child: Stack(
-                            children: [
-                              // notifications icon
-                              Icon(
-                                Icons.notifications,
-                                color: Colors.grey.shade500,
-                              ),
-
-                              // active icon
-                              Positioned(
-                                right: 0,
-                                top: 0,
-                                child: Icon(
-                                  Icons.circle_rounded,
-                                  size: 8,
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
+                      NotificationsIconButton()
                     ],
                   ),
                 ],
