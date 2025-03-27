@@ -6,19 +6,22 @@ class CustomTileButton extends StatelessWidget {
     required this.title,
     this.onTap,
     this.textColor,
+    this.paddingValue = 15,
+    this.containerHeight = 55,
   });
 
   final String title;
   final void Function()? onTap;
   final Color? textColor;
+  final double paddingValue, containerHeight;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 55,
-        padding: EdgeInsets.symmetric(vertical: 15),
+        height: containerHeight,
+        padding: EdgeInsets.symmetric(vertical: paddingValue),
         decoration: BoxDecoration(
           color: Colors.transparent,
           border: Border(bottom: BorderSide(color: Colors.black12)),
