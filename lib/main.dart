@@ -1,5 +1,6 @@
 import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu.dart';
 import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu_notifier.dart';
+import 'package:e_learn/features/categories_screen/category_notifier.dart';
 import 'package:e_learn/services/notifications.dart';
 import 'package:e_learn/utils/routes/routes.dart';
 import 'package:e_learn/utils/theme/theme.dart';
@@ -27,6 +28,7 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => BottomNavigationNotifier()),
+      ChangeNotifierProvider(create: (_) => SchoolCategoryNotifier()),
     ],
     child: const MyApp(),
   ));
