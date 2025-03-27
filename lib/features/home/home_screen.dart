@@ -4,6 +4,8 @@ import 'package:e_learn/features/widgets/notifications_icon_button.dart';
 import 'package:e_learn/features/widgets/profile_image_circular_container.dart';
 import 'package:e_learn/features/widgets/section_header.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
+import 'package:e_learn/utils/constants/subjects.dart';
+import 'package:e_learn/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,14 +14,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var
-    List<String> categories = [
-      'Nursery',
-      'Primary',
-      'O-Level',
-      'A-Level',
-      'Skill-Based Learning',
-    ];
-
     List<String> bannerTitles = [
       "New vocabulary course is now available",
       "New physics topics have been added",
@@ -106,12 +100,14 @@ class HomeScreen extends StatelessWidget {
               child: ListView.separated(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
+                itemCount: lessons["schools"]!.length,
                 separatorBuilder: (_, __) => SizedBox(width: 10),
                 itemBuilder: (context, index) => InkWell(
                   borderRadius: BorderRadius.circular(20),
                   hoverColor: ColorStrings.primary,
-                  onTap: () {},
+                  // push me to the classes screen with the school level as a title
+                  onTap: () =>
+                      router.push("/classes/${lessons["schools"]![index]}"),
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     decoration: BoxDecoration(
@@ -119,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Center(
-                      child: Text(categories[index]),
+                      child: Text(lessons["schools"]![index]),
                     ),
                   ),
                 ),
