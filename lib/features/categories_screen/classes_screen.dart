@@ -30,46 +30,21 @@ class ClassesScreen extends StatelessWidget {
           itemBuilder: (context, index) => Column(
             children: [
               // container with onTap feature
-              InkWell(
+              DecoratedContainerButtonWidget(
+                title: classes[schoolLevel]![index],
                 onTap: () => schoolCategoryNotifier.selectClass(
                   // select the class particular in that school level
                   classSelected: classes[schoolLevel]![index],
                 ),
-                borderRadius: BorderRadius.circular(15),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 40,
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: ColorStrings.secondary),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        classes[schoolLevel]![index],
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(fontSize: 17),
-                      ),
-
-                      // icon
-
-                      Icon(
-                        schoolCategoryNotifier.selectedClass ==
-                                classes[schoolLevel]![index]
-                            ? Icons.keyboard_arrow_down_rounded
-                            : Icons.arrow_forward_ios_rounded,
-                        size: schoolCategoryNotifier.selectedClass ==
-                                classes[schoolLevel]![index]
-                            ? 25
-                            : 15,
-                      )
-                    ],
-                  ),
+                icon: Icon(
+                  schoolCategoryNotifier.selectedClass ==
+                          classes[schoolLevel]![index]
+                      ? Icons.keyboard_arrow_down_rounded
+                      : Icons.arrow_forward_ios_rounded,
+                  size: schoolCategoryNotifier.selectedClass ==
+                          classes[schoolLevel]![index]
+                      ? 25
+                      : 15,
                 ),
               ),
 
@@ -93,9 +68,10 @@ class ClassesScreen extends StatelessWidget {
                       separatorBuilder: (_, __) => const SizedBox(height: 10),
                       itemBuilder: (_, indexee) => InkWell(
                         hoverColor: ColorStrings.secondary,
-                        // push me to the subject detail with title comprising of class and subject title
+                        // push me to the topics screen of a particular subject with title comprising of class and subject title
                         onTap: () => router.push(
-                            '/subject-detail/${classes[schoolLevel]![index]} : ${subjects[classes[schoolLevel]![index]]![indexee]}'),
+                          '/topics/${subjects[classes[schoolLevel]![index]]![indexee]}/${classes[schoolLevel]![index]}',
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: CustomTileButton(
@@ -112,6 +88,52 @@ class ClassesScreen extends StatelessWidget {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class DecoratedContainerButtonWidget extends StatelessWidget {
+  const DecoratedContainerButtonWidget({
+    super.key,
+    required this.title,
+    this.onTap,
+    required this.icon,
+  });
+
+  final String title;
+  final void Function()? onTap;
+  final Icon icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 40,
+        alignment: Alignment.centerLeft,
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: ColorStrings.secondary),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall!
+                  .copyWith(fontSize: 17),
+            ),
+
+            // icon
+            icon
+          ],
         ),
       ),
     );

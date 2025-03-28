@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:flutter/material.dart';
 
-class SubjectDetailsScreen extends StatelessWidget {
-  const SubjectDetailsScreen({super.key, required this.subjectTitle});
+class TopicDetailsScreen extends StatelessWidget {
+  const TopicDetailsScreen({super.key, required this.topicTitle});
 
-  final String subjectTitle;
+  final String topicTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class SubjectDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          subjectTitle,
+          topicTitle,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
