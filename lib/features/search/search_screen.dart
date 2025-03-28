@@ -80,6 +80,7 @@ class SearchScreen extends StatelessWidget {
               // top searches them selves
               Container(
                 height: 70,
+                width: MediaQuery.of(context).size.width * 0.5,
                 alignment: Alignment.centerLeft,
                 child: Wrap(
                   spacing: 2,
