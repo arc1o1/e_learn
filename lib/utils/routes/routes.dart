@@ -1,5 +1,6 @@
 import 'package:e_learn/features/categories_screen/classes_screen.dart';
-import 'package:e_learn/features/categories_screen/subject_details_screen.dart';
+import 'package:e_learn/features/categories_screen/topic_details_screen.dart';
+import 'package:e_learn/features/categories_screen/topics_screen.dart';
 import 'package:e_learn/features/home/home_screen.dart';
 import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ final GoRouter _router = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
 
-    // classes screens => classes
+    // list of classes  => classes
     GoRoute(
       path: '/classes/:classTitle',
       builder: (context, state) => ClassesScreen(
@@ -31,11 +32,20 @@ final GoRouter _router = GoRouter(
       ),
     ),
 
-    // subject detail screen => subjects
+    // list of topics => topics
     GoRoute(
-      path: '/subject-detail/:subjectTitle',
-      builder: (context, state) => SubjectDetailsScreen(
+      path: '/topics/:subjectTitle/:classTitle',
+      builder: (context, state) => TopicsScreen(
         subjectTitle: state.pathParameters['subjectTitle'].toString(),
+        classTitle: state.pathParameters['classTitle'].toString(),
+      ),
+    ),
+
+    // topic detail screen => topic details
+    GoRoute(
+      path: '/topic-detail/:topicTitle',
+      builder: (context, state) => TopicDetailsScreen(
+        topicTitle: state.pathParameters['topicTitle'].toString(),
       ),
     ),
   ],
