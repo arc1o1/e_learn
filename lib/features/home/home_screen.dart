@@ -130,7 +130,10 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // continue learning
-            HomeLessonSection(sectionTitle: "Ongoing Lessons"),
+            HomeLessonSection(
+              sectionTitle: "Ongoing Lessons",
+              showProgress: true,
+            ),
 
             const SizedBox(height: 10),
 

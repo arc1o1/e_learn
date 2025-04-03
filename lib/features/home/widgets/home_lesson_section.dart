@@ -3,9 +3,14 @@ import 'package:e_learn/features/widgets/section_header.dart';
 import 'package:flutter/material.dart';
 
 class HomeLessonSection extends StatelessWidget {
-  const HomeLessonSection({super.key, required this.sectionTitle});
+  const HomeLessonSection({
+    super.key,
+    required this.sectionTitle,
+    this.showProgress = false,
+  });
 
   final String sectionTitle;
+  final bool showProgress;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,9 @@ class HomeLessonSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 4,
             separatorBuilder: (_, __) => const SizedBox(width: 10),
-            itemBuilder: (_, index) => LessonVerticalContainer(),
+            itemBuilder: (_, index) => LessonVerticalContainer(
+              showProgress: showProgress,
+            ),
           ),
         ),
       ],
