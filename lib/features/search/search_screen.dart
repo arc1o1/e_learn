@@ -1,5 +1,4 @@
 import 'package:e_learn/features/widgets/section_header.dart';
-import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -49,13 +48,9 @@ class SearchScreen extends StatelessWidget {
             height: 40,
             child: TextField(
               decoration: InputDecoration(
-                filled: true,
-                fillColor: Color(0x35412E81),
+                // filled: true,
+                // fillColor: Color(0x35412E81),
                 contentPadding: const EdgeInsets.all(0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10000),
-                  borderSide: const BorderSide(color: Colors.black),
-                ),
                 prefixIcon: const Icon(Icons.search_rounded),
                 hintText: "Search",
                 hintStyle: Theme.of(context)
@@ -80,7 +75,6 @@ class SearchScreen extends StatelessWidget {
               // top searches them selves
               Container(
                 height: 70,
-                width: MediaQuery.of(context).size.width * 0.5,
                 alignment: Alignment.centerLeft,
                 child: Wrap(
                   spacing: 2,
@@ -120,7 +114,6 @@ class SearchScreen extends StatelessWidget {
 
               // categories
               Container(
-                height: 350,
                 color: Colors.transparent,
                 child: ListView.separated(
                   shrinkWrap: true,
@@ -158,26 +151,26 @@ class SearchScreen extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              // all lessons
-              InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(1000),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 5,
-                  ),
-                  child: Text(
-                    "See all lessons",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                          color: ColorStrings.primary,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          decoration: TextDecoration.underline,
-                        ),
-                  ),
-                ),
-              )
+              // // all lessons
+              // InkWell(
+              //   onTap: () {},
+              //   borderRadius: BorderRadius.circular(1000),
+              //   child: Padding(
+              //     padding: const EdgeInsets.symmetric(
+              //       horizontal: 50,
+              //       vertical: 5,
+              //     ),
+              //     child: Text(
+              //       "See all lessons",
+              //       style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+              //             color: ColorStrings.primary,
+              //             fontSize: 17,
+              //             fontWeight: FontWeight.w800,
+              //             decoration: TextDecoration.underline,
+              //           ),
+              //     ),
+              //   ),
+              // )
             ],
           )
         ],
