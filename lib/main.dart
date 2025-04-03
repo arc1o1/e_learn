@@ -1,6 +1,9 @@
+import 'package:e_learn/features/auth/notifier/auth_notifier.dart';
 import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu.dart';
-import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu_notifier.dart';
-import 'package:e_learn/features/categories_screen/category_notifier.dart';
+import 'package:e_learn/features/bottom_nav_menu/notifier/bottom_nav_menu_notifier.dart';
+import 'package:e_learn/features/payments/notifier/payment_notifier.dart';
+import 'package:e_learn/features/school_level_category_screen/notifier/school_level_category_notifier.dart';
+import 'package:e_learn/features/topics_screen/notifier/topics_notifier.dart';
 import 'package:e_learn/services/notifications.dart';
 import 'package:e_learn/utils/routes/routes.dart';
 import 'package:e_learn/utils/theme/theme.dart';
@@ -28,7 +31,10 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => BottomNavigationNotifier()),
-      ChangeNotifierProvider(create: (_) => SchoolCategoryNotifier()),
+      ChangeNotifierProvider(create: (_) => SchoolLevelCategoryNotifier()),
+      ChangeNotifierProvider(create: (_) => TopicsNotifier()),
+      ChangeNotifierProvider(create: (_) => PaymentNotifier()),
+      ChangeNotifierProvider(create: (_) => AuthNotifier()),
     ],
     child: const MyApp(),
   ));
