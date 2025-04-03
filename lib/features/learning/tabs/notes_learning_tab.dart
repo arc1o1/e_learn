@@ -36,7 +36,6 @@ class NotesLearningTab extends StatelessWidget {
                       separatorBuilder: (_, __) => const SizedBox(width: 10),
                       itemBuilder: (_, index) => LessonVerticalContainer(
                         showProgress: true,
-                        showContents: false,
                       ),
                     ),
                   ),

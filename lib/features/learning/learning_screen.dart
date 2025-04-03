@@ -1,8 +1,8 @@
 import 'package:e_learn/features/learning/tabs/exams_learning_tab.dart';
 import 'package:e_learn/features/learning/tabs/notes_learning_tab.dart';
 import 'package:e_learn/features/learning/tabs/weekly_test_learning_tab.dart';
-import 'package:e_learn/features/learning/tabs/tab_bar_items.dart';
-import 'package:e_learn/utils/constants/color_strings.dart';
+import 'package:e_learn/features/learning/widgets/tab_bar_items.dart';
+import 'package:e_learn/features/widgets/tab_bar_header_items.dart';
 import 'package:flutter/material.dart';
 
 class LearningScreen extends StatelessWidget {
@@ -31,30 +31,12 @@ class LearningScreen extends StatelessWidget {
           child: Column(
             children: [
               // tab bars
-              ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                child: Container(
-                  height: 30,
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: ColorStrings.secondary,
-                  ),
-                  child: TabBar(
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    dividerColor: Colors.transparent,
-                    indicator: BoxDecoration(
-                      color: ColorStrings.primary,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    labelColor: Colors.white,
-                    tabs: const [
-                      TabBarItems(title: 'Notes', count: 0),
-                      TabBarItems(title: 'Weekly Tests', count: 0),
-                      TabBarItems(title: 'Exams', count: 0),
-                    ],
-                  ),
-                ),
+              TabBarHeaderItems(
+                tabs: const [
+                  TabBarItems(title: 'Notes', count: 0),
+                  TabBarItems(title: 'Weekly Tests', count: 0),
+                  TabBarItems(title: 'Exams', count: 0),
+                ],
               ),
 
               // tab bar views
