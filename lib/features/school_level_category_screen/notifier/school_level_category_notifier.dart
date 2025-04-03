@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SchoolCategoryNotifier extends ChangeNotifier {
+class SchoolLevelCategoryNotifier extends ChangeNotifier {
   String _selectedClass = "";
   String get selectedClass => _selectedClass;
 

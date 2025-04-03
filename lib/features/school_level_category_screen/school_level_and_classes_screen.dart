@@ -1,4 +1,4 @@
-import 'package:e_learn/features/categories_screen/category_notifier.dart';
+import 'package:e_learn/features/school_level_category_screen/notifier/school_level_category_notifier.dart';
 import 'package:e_learn/features/widgets/custom_title_button.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:e_learn/utils/constants/subjects.dart';
@@ -13,7 +13,7 @@ class ClassesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SchoolCategoryNotifier>(
+    return Consumer<SchoolLevelCategoryNotifier>(
       builder: (context, schoolCategoryNotifier, child) => Scaffold(
         appBar: AppBar(
           title: Text(
