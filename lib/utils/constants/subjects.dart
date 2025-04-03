@@ -1,3 +1,12 @@
+final items = ['Notes', 'Weekly Tests', 'Practicals'];
+
+final weeks = ['week 1', 'week 2', 'week 3', 'week 4'];
+final weeksItems = [
+  'ac_w1_notes.pdf',
+  'ac_w1_test.pdf',
+  'ac_w1_marking_scheme.pdf',
+];
+
 final lessons = {
   "schools": [
     'Nursery',
@@ -457,3 +466,14 @@ final topics = {
     "Personal Finance and Planning"
   ],
 };
+
+final paymentMethods = [
+  "Airtel Money",
+  "Mixx by Yas",
+  "M-Pesa",
+];
+
+final scholars = [
+  {"id": 1, "name": "Student"},
+  {"id": 2, "name": "Teacher"},
+];

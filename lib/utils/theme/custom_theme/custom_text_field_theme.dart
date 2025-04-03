@@ -1,3 +1,4 @@
+import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFieldTheme {
@@ -10,7 +11,7 @@ class CustomTextFieldTheme {
     errorMaxLines: 3,
     prefixIconColor: Colors.black,
     suffixIconColor: Colors.black,
-    fillColor: Colors.white,
+    fillColor: ColorStrings.secondary,
     contentPadding: const EdgeInsets.all(20),
     labelStyle: const TextStyle().copyWith(fontSize: 14, color: Colors.black),
     hintStyle: const TextStyle().copyWith(fontSize: 14, color: Colors.black),
@@ -18,16 +19,16 @@ class CustomTextFieldTheme {
     floatingLabelStyle:
         const TextStyle().copyWith(color: Colors.black.withValues(alpha: 0.8)),
     border: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(14),
-      borderSide: const BorderSide(width: 1, color: Colors.white),
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(width: 1, color: ColorStrings.primary),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(14),
-      borderSide: const BorderSide(width: 1, color: Colors.white),
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(width: 1, color: ColorStrings.primary),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
-      borderRadius: BorderRadius.circular(14),
-      borderSide: const BorderSide(width: 1, color: Colors.white),
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(width: 1, color: ColorStrings.primary),
     ),
   );
 

@@ -1,6 +1,13 @@
-import 'package:e_learn/features/categories_screen/classes_screen.dart';
-import 'package:e_learn/features/categories_screen/topic_details_screen.dart';
-import 'package:e_learn/features/categories_screen/topics_screen.dart';
+import 'package:e_learn/features/auth/forgot_password_screen/forgot_password_screen.dart';
+import 'package:e_learn/features/auth/signin/signin_screen.dart';
+import 'package:e_learn/features/auth/signup/signup_screen.dart';
+import 'package:e_learn/features/notifications/notifications_screen.dart';
+import 'package:e_learn/features/payments/payment_checkout_screen.dart';
+import 'package:e_learn/features/payments/payments_screen.dart';
+import 'package:e_learn/features/profile/edit_profile_screen.dart';
+import 'package:e_learn/features/school_level_category_screen/school_level_and_classes_screen.dart';
+import 'package:e_learn/features/topics_screen/topic_details_screen.dart';
+import 'package:e_learn/features/topics_screen/topics_screen.dart';
 import 'package:e_learn/features/home/home_screen.dart';
 import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +17,26 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter _router = GoRouter(
   navigatorKey: navigatorKey,
-  initialLocation: '/',
+  initialLocation: '/sign-in',
   routes: [
+    // signin
+    GoRoute(
+      path: '/sign-in',
+      builder: (context, state) => const SigninScreen(),
+    ),
+
+    // signup
+    GoRoute(
+      path: '/sign-up',
+      builder: (context, state) => const SignupScreen(),
+    ),
+
+    // forgot password
+    GoRoute(
+      path: '/forgot-password',
+      builder: (context, state) => const ForgotPasswordScreen(),
+    ),
+
     // bottom nav menu => entry navigation
     GoRoute(
       path: '/',
@@ -43,10 +68,36 @@ final GoRouter _router = GoRouter(
 
     // topic detail screen => topic details
     GoRoute(
-      path: '/topic-detail/:topicTitle',
+      path: '/topic-detail/:topicTitle/:showProgress',
       builder: (context, state) => TopicDetailsScreen(
         topicTitle: state.pathParameters['topicTitle'].toString(),
+        showProgress:
+            state.pathParameters['showProgress'] == 'true' ? true : false,
       ),
+    ),
+
+    // notifications screen
+    GoRoute(
+      path: '/notifications',
+      builder: (context, state) => NotificationsScreen(),
+    ),
+
+    // edit profile screen
+    GoRoute(
+      path: '/edit-profile',
+      builder: (context, state) => EditProfileScreen(),
+    ),
+
+    // payments screen
+    GoRoute(
+      path: '/payment-checkout',
+      builder: (context, state) => PaymentCheckoutScreen(),
+    ),
+
+    // payments screen
+    GoRoute(
+      path: '/payments',
+      builder: (context, state) => PaymentsScreen(),
     ),
   ],
 );
