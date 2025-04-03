@@ -1,6 +1,7 @@
 import 'package:e_learn/features/widgets/custom_title_button.dart';
 import 'package:e_learn/features/widgets/profile_image_circular_container.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
+import 'package:e_learn/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         // name
                         Text(
-                          "Joan Robert",
+                          "Jason Robert",
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall!
@@ -65,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
 
                         // email
                         Text(
-                          "joan.robert1@gmail.com",
+                          "jason.robert1@gmail.com",
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!
@@ -112,31 +113,19 @@ class ProfileScreen extends StatelessWidget {
           // edit profile
           CustomTileButton(
             title: "Edit Profile",
-            onTap: () {},
+            onTap: () => router.push('/edit-profile'),
           ),
 
           // notifications
           CustomTileButton(
             title: "Notifications",
-            onTap: () {},
-          ),
-
-          // settings
-          CustomTileButton(
-            title: "My Downloads",
-            onTap: () {},
+            onTap: () => router.push('/notifications'),
           ),
 
           // payments
           CustomTileButton(
             title: "Payments",
-            onTap: () {},
-          ),
-
-          // activity
-          CustomTileButton(
-            title: "Activities",
-            onTap: () {},
+            onTap: () => router.push('/payments'),
           ),
 
           // privacy
