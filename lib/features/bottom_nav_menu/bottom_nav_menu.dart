@@ -3,7 +3,7 @@ import 'package:e_learn/features/home/home_screen.dart';
 import 'package:e_learn/features/learning/learning_screen.dart';
 import 'package:e_learn/features/profile/profile_screen.dart';
 import 'package:e_learn/features/search/search_screen.dart';
-import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu_notifier.dart';
+import 'package:e_learn/features/bottom_nav_menu/notifier/bottom_nav_menu_notifier.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
