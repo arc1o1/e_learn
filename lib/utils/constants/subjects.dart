@@ -13,9 +13,9 @@ final lessons = {
     'Primary',
     'O-Level',
     'A-Level',
-    'Skill-Based Learning',
   ]
 };
+
 
 final classes = {
   'Nursery': [
@@ -475,5 +475,6 @@ final paymentMethods = [
 
 final scholars = [
   {"id": 1, "name": "Student"},
-  {"id": 2, "name": "Teacher"},
+  {"id": 2, "name": "Parent"},
+  {"id": 3, "name": "Teacher"},
 ];
