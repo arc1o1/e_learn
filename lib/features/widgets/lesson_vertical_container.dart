@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_learn/features/widgets/progress_indicator_widget.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
-import 'package:e_learn/utils/routes/routes.dart';
+import 'package:e_learn/services/routes.dart';
 import 'package:flutter/material.dart';
 
 class LessonVerticalContainer extends StatelessWidget {

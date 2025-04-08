@@ -1,6 +1,6 @@
 import 'package:e_learn/features/school_level_category_screen/school_level_and_classes_screen.dart';
 import 'package:e_learn/utils/constants/subjects.dart';
-import 'package:e_learn/utils/routes/routes.dart';
+import 'package:e_learn/services/routes.dart';
 import 'package:flutter/material.dart';
 
 class TopicsScreen extends StatelessWidget {

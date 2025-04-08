@@ -5,7 +5,7 @@ import 'package:e_learn/features/widgets/profile_image_circular_container.dart';
 import 'package:e_learn/features/widgets/section_header.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:e_learn/utils/constants/subjects.dart';
-import 'package:e_learn/utils/routes/routes.dart';
+import 'package:e_learn/services/routes.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

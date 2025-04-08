@@ -1,10 +1,14 @@
 final db = {
+  "scholars": [
+    {"id": 1, "name": "Student"},
+    {"id": 2, "name": "Parent"},
+    {"id": 3, "name": "Teacher"},
+  ],
   "schools": [
     {"id": 1, "name": "Nursery"},
     {"id": 2, "name": "Primary"},
     {"id": 3, "name": "O-Level"},
     {"id": 4, "name": "A-Level"},
-    {"id": 5, "name": "Skill-Based"}
   ],
   "classes": [
     {"id": 1, "school_level": "Nursery", "name": "English Medium"},
@@ -20,8 +24,6 @@ final db = {
     {"id": 11, "school_level": "O-Level", "name": "Form IV"},
     {"id": 12, "school_level": "A-Level", "name": "Form V"},
     {"id": 13, "school_level": "A-Level", "name": "Form VI"},
-    {"id": 14, "school_level": "Skill-Based", "name": "Computer Science"},
-    {"id": 15, "school_level": "Skill-Based", "name": "Language"}
   ],
   "subjects": [
     {

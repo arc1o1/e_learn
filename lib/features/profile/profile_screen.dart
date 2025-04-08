@@ -1,7 +1,7 @@
 import 'package:e_learn/features/widgets/custom_title_button.dart';
 import 'package:e_learn/features/widgets/profile_image_circular_container.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
-import 'package:e_learn/utils/routes/routes.dart';
+import 'package:e_learn/services/routes.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
