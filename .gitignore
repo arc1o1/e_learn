@@ -197,3 +197,5 @@ app.*.symbols
 !.vscode/settings.json
 
 
+.env.production
+.env.development
