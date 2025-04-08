@@ -1,6 +1,6 @@
 import 'package:e_learn/features/auth/widgets/dont_have_account_widget.dart';
-import 'package:e_learn/features/auth/signin/widgets/signin_form.dart';
-import 'package:e_learn/utils/routes/routes.dart';
+import 'package:e_learn/features/auth/signin_screen/signin_form.dart';
+import 'package:e_learn/services/routes.dart';
 import 'package:flutter/material.dart';
 
 class SigninScreen extends StatelessWidget {
