@@ -1,17 +1,24 @@
-import 'package:e_learn/features/auth/notifier/auth_notifier.dart';
+import 'package:dio/dio.dart';
+import 'package:e_learn/features/auth/provider/auth_provider.dart';
+import 'package:e_learn/services/auth_service.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
+
+import 'package:e_learn/features/auth/signin_screen/signin_view_model.dart';
+import 'package:e_learn/features/auth/signup_screen/signup_view_model.dart';
 import 'package:e_learn/features/bottom_nav_menu/bottom_nav_menu.dart';
 import 'package:e_learn/features/bottom_nav_menu/notifier/bottom_nav_menu_notifier.dart';
 import 'package:e_learn/features/payments/notifier/payment_notifier.dart';
 import 'package:e_learn/features/school_level_category_screen/notifier/school_level_category_notifier.dart';
 import 'package:e_learn/features/topics_screen/notifier/topics_notifier.dart';
+import 'package:e_learn/services/environment_service.dart';
 import 'package:e_learn/services/notifications.dart';
-import 'package:e_learn/utils/routes/routes.dart';
+import 'package:e_learn/services/routes.dart';
 import 'package:e_learn/utils/theme/theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,13 +35,23 @@ void main() async {
   //  initialize get storage
   GetStorage.init();
 
+  await dotenv.load(fileName: EnvironmentService.fileName);
+
+  // create Dio instance and pass to AuthService
+  final dio = Dio(BaseOptions(baseUrl: EnvironmentService.appBaseUrl));
+  final authService = AuthService(dio);
+
   runApp(MultiProvider(
     providers: [
+      // auth
+      ChangeNotifierProvider(create: (_) => AuthProvider(authService)),
+      ChangeNotifierProvider(create: (_) => SigninViewModel()),
+      ChangeNotifierProvider(create: (_) => SignupViewModel()),
+
       ChangeNotifierProvider(create: (_) => BottomNavigationNotifier()),
       ChangeNotifierProvider(create: (_) => SchoolLevelCategoryNotifier()),
       ChangeNotifierProvider(create: (_) => TopicsNotifier()),
       ChangeNotifierProvider(create: (_) => PaymentNotifier()),
-      ChangeNotifierProvider(create: (_) => AuthNotifier()),
     ],
     child: const MyApp(),
   ));
