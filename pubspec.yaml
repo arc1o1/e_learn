@@ -42,7 +42,7 @@ dependencies:
 
   # http
   dio:
-  jwt_decode:
+  jwt_decoder:
 
 
 dev_dependencies:
