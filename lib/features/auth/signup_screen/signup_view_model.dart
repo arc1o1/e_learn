@@ -156,7 +156,7 @@ class SignupViewModel extends ChangeNotifier {
     if (success) {
       router.go('/');
     } else {
-      // ignore: use_build_context_synchronously
+      return;
     }
   }
 

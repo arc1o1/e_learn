@@ -52,7 +52,7 @@ class AuthProvider with ChangeNotifier {
       taiId: taiId,
       context: context,
     );
-    debugPrint(success.toString());
+    debugPrint('sign-up completed successful: $success');
 
     if (success) {
       _isAuthenticated = true;

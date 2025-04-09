@@ -1,5 +1,6 @@
 import 'package:e_learn/features/auth/provider/auth_provider.dart';
 import 'package:e_learn/services/routes.dart';
+import 'package:e_learn/utils/constants/custom_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,9 +37,11 @@ class SigninViewModel extends ChangeNotifier {
 
     // check if email and password are not empty
     if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please Fill all the required fields')),
-      );
+      CustomLoader.errorSnackbar(
+          title: "All fields are mandatory",
+          message: "Email or Password field is missing",
+          context: context);
+
       return;
     }
 
@@ -56,8 +59,11 @@ class SigninViewModel extends ChangeNotifier {
       router.go("/");
     } else {
       // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login failed!. Please try again.')),
+      CustomLoader.errorSnackbar(
+        title: 'Login failed!.',
+        message: 'Please try again',
+        // ignore: use_build_context_synchronously
+        context: context,
       );
     }
   }

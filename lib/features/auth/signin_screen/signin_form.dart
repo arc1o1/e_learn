@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:e_learn/features/auth/signin_screen/signin_view_model.dart';
 import 'package:e_learn/features/auth/widgets/auth_field_items.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
-import 'package:e_learn/services/routes.dart';
 import 'package:e_learn/utils/validators/validators.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SigninForm extends StatelessWidget {
   const SigninForm({
@@ -15,12 +15,14 @@ class SigninForm extends StatelessWidget {
   Widget build(BuildContext context) {
     // provider instance
     final signinViewModel = context.watch<SigninViewModel>();
+
     return Column(
       children: [
         //email or phone
         AuthFieldItems(
-          title: "Email Address or Phone Number",
-          labelText: "email-address/phone-number",
+          title: "Username/Email Address",
+          labelText: "username/email-address",
+          controller: signinViewModel.emailController,
           validator: (value) =>
               Validators.validateEmptyText("email/phone-number", value),
           keyboardType: TextInputType.emailAddress,
@@ -33,6 +35,7 @@ class SigninForm extends StatelessWidget {
           title: "Password",
           labelText: "password",
           validator: (value) => Validators.validatePassword(value),
+          controller: signinViewModel.passwordController,
           obscureText: signinViewModel.hideSigninPassword,
           keyboardType: TextInputType.name,
           suffixIcon: IconButton(
@@ -79,7 +82,7 @@ class SigninForm extends StatelessWidget {
           height: 40,
           width: MediaQuery.of(context).size.width,
           child: ElevatedButton(
-            onPressed: () => router.go("/"),
+            onPressed: () => signinViewModel.signin(context),
             child: Text("Sign-In"),
           ),
         ),
