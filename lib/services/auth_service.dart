@@ -15,23 +15,43 @@ class AuthService {
 
   final scholar = User.empty();
 
+  // refresh token
+  Future<String?> refreshToken() async {
+    final refresh = await TokenService().getRefreshToken();
+
+    if (refresh == null) return null;
+
+    try {
+      final response = await _dio.post(
+        '/token/refresh',
+        data: jsonEncode({'refresh': refresh}),
+      );
+
+      if (response.statusCode == 200) {
+        final tokens = response.data;
+        await TokenService().saveAccessToken(tokens['access']);
+        return tokens['access'];
+      }
+    } catch (e) {
+      debugPrint('Token refresh failed: $e');
+    }
+    return null;
+  }
+
   // login service
   Future<bool> signin({required String email, required String password}) async {
     try {
       final response = await _dio.post(
-        '/token',
-        data: jsonEncode({'email': email, 'password': password}),
+        '/api/token/',
+        data: jsonEncode({'username': email, 'password': password}),
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final token = response.data;
         if (token != null) {
-          // decode the token
-          var decodedToken = jsonDecode(token);
-
           // save the token
-          await TokenService().saveAccessToken(decodedToken['access']);
-          await TokenService().saveRefreshToken(decodedToken['refresh']);
+          await TokenService().saveAccessToken(token['access']);
+          await TokenService().saveRefreshToken(token['refresh']);
 
           // return true
           return true;
@@ -86,15 +106,12 @@ class AuthService {
         final responseData = response.data;
         if (responseData != null) {
           // decode the token
-          var decodedResponse = jsonDecode(responseData);
 
           // save the token
-          await TokenService().saveAccessToken(decodedResponse['token']);
-          await TokenService().saveRefreshToken(decodedResponse['refresh']);
+          await TokenService().saveAccessToken(responseData['access']);
+          await TokenService().saveRefreshToken(responseData['refresh']);
 
-          // save user
-
-          // return true
+          // return success
           return true;
         }
       }
@@ -102,7 +119,7 @@ class AuthService {
       debugPrint('Sign-Up Attempt Failed: $e');
       CustomLoader.errorSnackbar(
         title: 'Sign-Up Attempt Failed',
-        message: e.toString(),
+        message: 'Please try again',
         // ignore: use_build_context_synchronously
         context: context,
       );

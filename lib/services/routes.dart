@@ -1,3 +1,5 @@
+import 'package:e_learn/services/dio_service_locator.dart';
+import 'package:e_learn/services/token_services.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,9 +18,37 @@ import 'package:e_learn/features/topics_screen/topics_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
+bool isLoggedIn() {
+  final token = locator<TokenService>().getAccessTokenSync();
+  return token != null && token.isNotEmpty;
+}
+
+bool isRefreshTokenValid() {
+  return locator<TokenService>().isRefreshTokenValid();
+}
+
+// =============================================================================
+
 final GoRouter _router = GoRouter(
   navigatorKey: navigatorKey,
   initialLocation: '/sign-in',
+  redirect: (context, state) {
+    final loggedIn = isLoggedIn();
+    final refreshTokenValid = isRefreshTokenValid();
+
+    // if not authenticated
+    if (!loggedIn && !refreshTokenValid) {
+      return '/sign-in';
+    }
+
+    // if authenticated
+    if (loggedIn && refreshTokenValid) {
+      return '/';
+    }
+
+    // do not redirect
+    return null;
+  },
   routes: [
     // signin
     GoRoute(

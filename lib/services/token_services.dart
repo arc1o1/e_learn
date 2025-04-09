@@ -1,5 +1,6 @@
 // services/token_service.dart
 import 'package:get_storage/get_storage.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class TokenService {
   final GetStorage _storage = GetStorage();
@@ -14,9 +15,20 @@ class TokenService {
     return await _storage.read('accessToken') ?? '';
   }
 
+  String? getAccessTokenSync() {
+    return _storage.read('accessToken');
+  }
+
   // delete the access token
   Future<void> deleteAccessToken() async {
     await _storage.remove('accessToken');
+  }
+
+  // check validity
+  bool isAccessTokenValid() {
+    final token = getAccessTokenSync();
+    if (token == null || token.isEmpty) return false;
+    return !JwtDecoder.isExpired(token);
   }
 
   // save refresh token
@@ -29,8 +41,19 @@ class TokenService {
     return await _storage.read('refreshToken') ?? '';
   }
 
+  String? getRefreshTokenSync() {
+    return _storage.read('refreshToken');
+  }
+
   // delete the refresh token
   Future<void> deleteRefreshToken() async {
     await _storage.remove('refreshToken');
+  }
+
+  // check validity
+  bool isRefreshTokenValid() {
+    final token = getRefreshTokenSync();
+    if (token == null || token.isEmpty) return false;
+    return !JwtDecoder.isExpired(token);
   }
 }

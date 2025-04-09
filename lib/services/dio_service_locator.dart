@@ -23,10 +23,34 @@ void setupLocator() {
             // Add JWT token to request headers
             final token = await locator<TokenService>().getAccessToken();
 
-            if (token != null) {
+            // List of public endpoints that do NOT need a token
+            final publicPaths = ['sign-up/', 'token/', 'token_refresh/'];
+
+            bool isPublic = publicPaths.any(
+              (path) => options.path.contains(path),
+            );
+
+            // if it is not a public path and token is not null
+            if (!isPublic && token != null) {
               options.headers['Authorization'] = 'Bearer $token';
             }
+
             return handler.next(options);
+          },
+          onError: (DioException e, handler) async {
+            // If token expired
+            if (e.response?.statusCode == 401 ||
+                e.response?.statusCode == 403) {
+              final newToken = await locator<AuthService>().refreshToken();
+              if (newToken != null) {
+                final retryOptions = e.requestOptions;
+                retryOptions.headers['Authorization'] = 'Bearer $newToken';
+
+                final cloneReq = await dio.fetch(retryOptions);
+                return handler.resolve(cloneReq);
+              }
+            }
+            return handler.next(e);
           },
         ),
       );
