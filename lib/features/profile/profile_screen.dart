@@ -1,33 +1,25 @@
+import 'package:e_learn/features/profile/profile_view_model.dart';
 import 'package:e_learn/features/widgets/custom_title_button.dart';
 import 'package:e_learn/features/widgets/profile_image_circular_container.dart';
 import 'package:e_learn/utils/constants/color_strings.dart';
 import 'package:e_learn/services/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // provider instantiation
+    final profileViewModel = context.watch<ProfileViewModel>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "My Profile",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
-        // actions: [
-        //   Padding(
-        //     padding: const EdgeInsets.only(right: 15),
-        //     child: InkWell(
-        //       onTap: () {},
-        //       borderRadius: BorderRadius.circular(100),
-        //       child: Container(
-        //         padding: EdgeInsets.all(5),
-        //         child: Icon(Icons.menu_rounded),
-        //       ),
-        //     ),
-        //   ),
-        // ],
       ),
       body: ListView(
         padding: EdgeInsets.fromLTRB(15, 30, 15, 10),
@@ -76,17 +68,6 @@ class ProfileScreen extends StatelessWidget {
                     )
                   ],
                 ),
-
-                // // badge
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 5),
-                //   child: ProfileImageCircularContainer(
-                //     radius: 15,
-                //     showBorder: false,
-                //     imageUrl:
-                //         "https://image.similarpng.com/file/similarpng/very-thumbnail/2020/10/Golden-empty-badge-label-element-on-transparent-background-PNG.png",
-                //   ),
-                // )
               ],
             ),
           ),
@@ -144,7 +125,7 @@ class ProfileScreen extends StatelessWidget {
           CustomTileButton(
             title: "Log out",
             textColor: Colors.red,
-            onTap: () {},
+            onTap: () => profileViewModel.signout(context),
           ),
         ],
       ),
